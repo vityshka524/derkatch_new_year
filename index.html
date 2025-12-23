@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Скоро Новый год 🎄</title>
+
+  <!-- Адаптивность -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Минимальные стили прямо здесь (потом вынесем в CSS) -->
+  <style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        height: 100vh;
+        overflow: hidden;
+        color: white;
+    }
+
+    .background {
+        position: fixed;
+        inset: 0;
+        background: url("media/images/background.jpg") center / cover no-repeat;
+        filter: blur(12px);
+        transform: scale(1.1);
+        z-index: -2;
+    }
+
+    .overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: -1;
+}
+.container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+}
+
+.timer {
+  display: flex;
+  gap: 15px;
+}
+
+.time-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 15px 18px;
+  min-width: 70px;
+}
+
+.time-box span {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.time-box small {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Поле и кнопка */
+input {
+  padding: 10px;
+  width: 220px;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  padding: 10px 30px;
+  border-radius: 8px;
+  border: none;
+  background: #ffcc00;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffdd33;
+}
+
+.error {
+  display: none;
+  color: #ff9a9a;
+}
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+#snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* чтобы не мешал кликам */
+  z-index: 1;
+}
+
+
+
+  </style>
+</head>
+
+<script src="js/timer.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/snow.js"></script>
+
+<body>
+
+  <!-- Фон -->
+  <div class="background"></div>
+  <div class="overlay"></div>
+
+  <!-- Контент -->
+  <div class="container">
+    <h1>До Нового года осталось</h1>
+
+    <div id="timer" class="timer">
+      <div class="time-box">
+        <span id="days">0</span>
+        <small>дней</small>
+      </div>
+      <div class="time-box">
+        <span id="hours">0</span>
+        <small>часов</small>
+      </div>
+      <div class="time-box">
+        <span id="minutes">0</span>
+        <small>минут</small>
+      </div>
+      <div class="time-box">
+        <span id="seconds">0</span>
+        <small>секунд</small>
+      </div>
+    </div>
+
+    <input type="password" id="password" placeholder="Введите пароль">
+    <button id="enterBtn">Войти</button>
+
+    <div class="error" id="error">Неверный пароль</div>
+  </div>
+
+</body>
+<canvas id="snow"></canvas>
+
+
+</html>

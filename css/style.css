@@ -1,0 +1,483 @@
+.page {
+  display: flex;
+  min-height: auto; /* вместо 100vh */
+  align-items: flex-start; /* контент сверху */
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  height: auto;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+.section {
+  margin-bottom: 80px;
+}
+
+/* ===== КАЛЕНДАРЬ ===== */
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 30px;
+  padding: 5px 0;
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  color: black
+}
+
+.day.special {
+  background: rgb(101, 178, 255);
+  border-radius: 75%; /* круг */
+  width: 40px;
+  height: 30px;
+  margin: 0 auto; /* центрируем в ячейке */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: black;
+}
+
+.day.special:hover {
+  background: rgb(33, 128, 223);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  display: none;
+}
+
+/* Сетка месяцев */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 20px;
+}
+
+/* Блок одного месяца */
+.month {
+  background: rgba(245, 245, 247, .8);
+  border-radius: 60px;
+  padding: 10px;
+}
+
+/* Название месяца */
+.month h3 {
+  text-align: center;
+  margin: 0 0 10px 0;
+  color: black
+}
+
+.month-caption {
+  width: 100%;         /* 👈 та же ширина, что и сетка */
+  text-align: center;  /* 👈 текст по центру */
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: black;
+}
+
+/* Сетка дней недели и дней */
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+/* Заголовки дней недели */
+.day-name {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* День месяца */
+.day {
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.15);
+  position: relative;
+  min-height: 30px;
+}
+
+/* Затемнение + блюр */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px); /* 🔥 блюр */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Сам tooltip */
+.modal-tooltip {
+  background: rgba(245, 245, 247, 0.9);
+  color: rgba(20, 20, 20);
+  width: 33vw;              /* 👈 срединная треть экрана */
+  max-width: 840px;
+  min-width: 560px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  font-size: 32px;
+  line-height: 1.5;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  animation: modalFadeIn 0.25s ease;
+}
+
+/* Текст внутри */
+#modal-content {
+  text-align: center;
+}
+
+/* Кнопка закрытия */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Анимация */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Контент */
+.content {
+  padding-bottom: 120px; /* место под нижнюю навигацию */
+}
+
+/* Секции */
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  display: none;
+}
+
+.section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Нижняя навигация */
+.bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2F80ED;
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* Кнопки */
+.nav-item {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  padding: 12px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Активная вкладка */
+.nav-item.active {
+  background: #2568C9;
+  color: #101828;
+  font-weight: bold;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: black;
+  margin-bottom: 12px;
+}
+
+
+/* ===== КАРУСЕЛЬ ===== */
+
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ОКНО — режет всё лишнее */
+.carousel-viewport {
+  width: 100vw;
+  overflow: hidden;     /* ← ГЛАВНЫЙ ФИКС */
+  display: flex;
+  /* justify-content: center; */
+}
+
+/* ЛЕНТА */
+.carousel-track {
+  display: flex;
+  gap: 40px;
+  transition: transform 0.6s ease;
+  will-change: transform;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.carousel-card {
+  width: 30vw;
+  min-width: 750px;
+  height: 500px;
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transform: scale(0.8);
+  filter: blur(4px);
+  opacity: 0.6;
+  transition: transform 0.6s ease, filter 0.6s ease, opacity 0.6s ease;
+}
+
+
+.carousel-card.active {
+  transform: scale(1);
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* Стрелки */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ffcc00;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-arrow.left { left: 20px; }
+.carousel-arrow.right { right: 20px; }
+
+
+
+.carousel-dots {
+  position: fixed;
+  bottom: 20px;
+
+  left: 50%;
+  transform: translateX(-65%);
+
+  display: flex;
+  gap: 10px;
+
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  background: #777;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-dot.active {
+  background: #2F80ED;
+  transform: scale(1.3);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+}
+
+.stat-number {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.stat-text {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+
+.text-card {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-card p {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 80%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* когда карточка активна */
+.carousel-card.active .text-card p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.table-card {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-card table {
+  border-collapse: collapse;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.table-card td {
+  padding: 12px 20px;
+}
+
+.table-card .cell {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.table-card .cell.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.gif-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gif-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* или cover */
+  border-radius: 20px;
+}
+
+.carousel-card.active .gif-video {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

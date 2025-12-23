@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>С Новым годом 🎄</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Фон -->
+  <div class="background"></div>
+  <div class="overlay"></div>
+  
+
+  <!-- Контент -->
+  <div class="page">
+
+    <main class="content">
+
+      <section id="calendar" class="section active">
+        <h2>Обзор (не всегда) совместных приключений</h2>
+        <p>Проанализировав нашу переписку, я достал самые важные даты этого года и дал свой ретроспективный комментарий. Вспомни их тоже (даты кликабельны), а между днями можно переключаться стрелками на клаве.</p>
+        <div id="calendar-grid" class="calendar-grid"></div>
+      </section>
+
+      <section id="summary" class="section">
+        <h2>Итоги года</h2>
+
+        <div class="carousel">
+          <button class="carousel-arrow left"></button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+
+              <div class="carousel-card" data-bg="green.png" data-type="stat">
+                  <div class="stat-card">
+                    <div class="stat-number" data-target="16698">0</div>
+                    <div class="stat-text">Именно столькими сообщениями мы обменялись в тг за этот год!<br> Из них ты отправил 7055, а я 9643.</div>
+                  </div>
+              </div>
+
+              <div class="carousel-card" data-bg="violet.png" data-type="text">
+                <div class="text-card">
+                  <p>
+                    Дальше позволю себе небольшой аналитический обзор, а как вообще выглядела наша переписка. <br>
+                    Начнем, пожалуй, с того как вообще мы коммуницируем друг с другом.
+                  </p>
+                </div>
+              </div>
+
+              <div class="carousel-card" data-bg="red.png" data-type="table">
+                <div class="table-card">
+                  <table>
+                    <tr>
+                      <td></td>
+                      <td class="cell">Илюха</td>
+                      <td class="cell">Витя</td>
+                    </tr>
+                    <tr>
+                      <td>Стикеры</td>
+                      <td class="cell">73</td>
+                      <td class="cell">40</td>
+                    </tr>                    
+                    <tr>
+                      <td>Фотки</td>
+                      <td class="cell">242</td>
+                      <td class="cell">347</td>
+                    </tr>
+                    <tr>
+                      <td>Кружочки, шт</td>
+                      <td class="cell">5</td>
+                      <td class="cell">10</td>
+                    </tr>
+                    <tr>
+                      <td>Кружочки, минуты</td>
+                      <td class="cell">0.85</td>
+                      <td class="cell">1.5</td>
+                    </tr>
+                    <tr>
+                      <td>Голосовухи, шт</td>
+                      <td class="cell">16</td>
+                      <td class="cell">66</td>
+                    </tr>                    
+                    <tr>
+                      <td>Голосовухи, мин</td>
+                      <td class="cell">26</td>
+                      <td class="cell">46</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+            
+              <div class="carousel-card" data-bg="violet.png" data-type="text">
+                <div class="text-card">
+                  <p>
+                    А теперь задушимся с анализа текстовых сообщений, как там вообще вопрос обстоит. <br>
+                    (Я смотрю на то, что вообще посчитано и думаю "ебать почему я подумал что это интересно")
+                  </p>
+                </div>
+              </div>
+
+
+              <div class="carousel-card" data-bg="red.png" data-type="table">
+                <div class="table-card">
+                  <table>
+                    <tr>
+                      <td></td>
+                      <td class="cell">Илюха</td>
+                      <td class="cell">Витя</td>
+                    </tr>
+                    <tr>
+                      <td>Средняя длина сообщения, слова</td>
+                      <td class="cell">5.05</td>
+                      <td class="cell">4.75</td>
+                    </tr>  
+                    <tr>
+                      <td>Медианная длина сообщения, слова</td>
+                      <td class="cell">4</td>
+                      <td class="cell">4</td>
+                    </tr>                    
+                    <tr>
+                      <td>Всего слов отправлено</td>
+                      <td class="cell">35653</td>
+                      <td class="cell">45862</td>
+                    </tr>
+                    <tr>
+                      <td>Самое длинное сообщение, слова</td>
+                      <td class="cell">177</td>
+                      <td class="cell">243</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              
+              <div class="carousel-card" data-bg="violet.png" data-type="text">
+                <div class="text-card">
+                  <p>
+                    Дальше несколько интересных фактов об этом годе 
+                  </p>
+                </div>
+              </div>     
+              
+              
+              <div class="carousel-card" data-bg="green.png" data-type="stat">
+                  <div class="stat-card">
+                    <div class="stat-number" data-target="11">0</div>
+                    <div class="stat-text">Именно столькими кодов от бейдж-бота я нашел у нас в переписке</div>
+                  </div>
+              </div>       
+
+              <div class="carousel-card" data-bg="green.png" data-type="stat">
+                  <div class="stat-card">
+                    <div class="stat-number" data-target="0">0</div>
+                    <div class="stat-text">Именно столько походов вместе на йогу, на прогулку с Муляевичем, на скалодром и в поход с Тырчем я насчитал суммарно. МАЛОВАТО</div>
+                  </div>
+              </div>
+              <div class="carousel-card" data-bg="violet.png" data-type="text">
+                <div class="text-card">
+                  <p>
+                    Ну и напоследок немного хохм с визуальными данными. Я уже устал думать о дизайне, поэтому тут Уродск чистой воды, только функциональность. </br> 
+                    Если что графики про общее количество сообщений к конкретной дате и карта самых частых слов
+                  </p>
+                </div>
+              </div>  
+              <div class="carousel-card"
+                data-type="gif"
+                data-played="false"
+                data-bg="green.png">
+
+              <div class="gif-card">
+                <video
+                  class="gif-video"
+                  src="media/videos/gifs/plt.mp4"
+                  muted
+                  playsinline
+                  preload="auto">
+                </video>
+              </div>
+
+              </div>
+              <div class="carousel-card"
+                data-type="gif"
+                data-played="false"
+                data-bg="green.png">
+
+              <div class="gif-card">
+                <video
+                  class="gif-video"
+                  src="media/videos/gifs/wordcloud.mp4"
+                  muted
+                  playsinline
+                  preload="auto">
+                </video>
+              </div>
+
+              </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <button class="carousel-arrow right"></button>
+          <div class="carousel-dots"></div>
+        </div>
+
+      </section>
+
+
+    <section id="media" class="section">
+        <h2>Медиа</h2>
+        <p>Здесь будут фото и видео</p>
+    </section>
+
+    </main>
+
+
+  </div>
+
+<nav class="bottom-nav">
+<button class="nav-item active" data-target="calendar">📅 Календарь</button>
+<button class="nav-item" data-target="summary">📊 Итоги</button>
+<button class="nav-item" data-target="media">📸 Медиа</button>
+</nav>
+
+<script src="js/navigation.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/carousel.js"></script>
+
+<div id="modal-overlay" class="modal-overlay">
+  <div class="modal-tooltip">
+
+    <div class="modal-header">
+      <span id="modal-date"></span>
+    </div>
+
+    <div id="modal-content"></div>
+
+    <button class="modal-close">×</button>
+  </div>
+</div>
+
+</body>
+</html>
